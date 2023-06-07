@@ -1,4 +1,5 @@
 from collections import Counter
+
 import numpy as np
 
 ed = lambda x, y: np.sqrt(np.sum((x - y)**2))
@@ -29,9 +30,9 @@ class KNN:
 
 
 if __name__ == "__main__":
+    import matplotlib.pyplot as plt
     from sklearn import datasets
     from sklearn.model_selection import train_test_split
-    import matplotlib.pyplot as plt
 
     iris = datasets.load_iris()
     X, y = iris.data, iris.target
