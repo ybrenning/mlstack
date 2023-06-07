@@ -15,8 +15,8 @@ class LinearRegression:
 
         for _ in range(0, self.n_iters):
             y_pred = np.dot(X, self.w) + self.b
-            dw = 1/n_samples * np.dot((y_pred - y), X)
-            db = 1/n_samples * np.sum(y_pred - y)
+            dw = 1 / n_samples * np.dot((y_pred - y), X)
+            db = 1 / n_samples * np.sum(y_pred - y)
 
             self.w -= self.lr * dw
             self.b -= self.lr * db
@@ -29,21 +29,20 @@ if __name__ == "__main__":
     import matplotlib.pyplot as plt
     from sklearn import datasets
     from sklearn.model_selection import train_test_split
-    
+
     X, y = datasets.make_regression(
-        n_samples=100,
-        n_features=1,
-        noise=20,
-        random_state=4
+        n_samples=100, n_features=1, noise=20, random_state=4
     )
 
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1234)
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=1234
+    )
 
     regressor = LinearRegression(lr=0.01)
     regressor.fit(X_train, y_train)
     predicted = regressor.predict(X_test)
 
-    mse = lambda y_t, y_p: np.mean((y_t - y_p)**2)
+    mse = lambda y_t, y_p: np.mean((y_t - y_p) ** 2)
 
     print(mse(y_test, predicted))
 
@@ -52,7 +51,7 @@ if __name__ == "__main__":
 
     # regressor2 = LinearRegression(lr=0.001)
     # regressor2.fit(X_train, y_train)
-    
+
     # print(mse(y_test, regressor2.predict(X_test)))
     # plt.plot(X, regressor2.predict(X), color="magenta", label="Prediction 2")
     plt.show()

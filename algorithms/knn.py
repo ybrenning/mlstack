@@ -3,7 +3,8 @@ from collections import Counter
 import numpy as np
 
 # See also: https://en.wikipedia.org/wiki/Euclidean_distance
-ed = lambda x, y: np.sqrt(np.sum((x - y)**2))
+ed = lambda x, y: np.sqrt(np.sum((x - y) ** 2))
+
 
 class KNN:
     def __init__(self, k=3):
@@ -22,7 +23,7 @@ class KNN:
         distances = [ed(x, x_train) for x_train in self.X_train]
 
         # Get the k-nearest samples, labels
-        k_indices = np.argsort(distances)[:self.k]
+        k_indices = np.argsort(distances)[: self.k]
         k_nearest_labels = [self.y_train[i] for i in k_indices]
 
         # Get the most common class label
@@ -38,7 +39,9 @@ if __name__ == "__main__":
     iris = datasets.load_iris()
     X, y = iris.data, iris.target
 
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1234)
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=1234
+    )
 
     classifier = KNN(k=5)
     classifier.fit(X_train, y_train)

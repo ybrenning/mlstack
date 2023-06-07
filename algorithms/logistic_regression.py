@@ -1,10 +1,10 @@
 import warnings
-import numpy as np
 
+import numpy as np
 
 warnings.filterwarnings("ignore")
 
-sig = lambda x: 1/(1 + np.exp(-x))
+sig = lambda x: 1 / (1 + np.exp(-x))
 
 
 class LogisticRegression:
@@ -25,8 +25,8 @@ class LogisticRegression:
             linear_model = np.dot(X, self.w) + self.b
             y_pred = sig(linear_model)
 
-            dw = 1/n_samples * np.dot((y_pred - y), X)
-            db = 1/n_samples * np.sum(y_pred - y)
+            dw = 1 / n_samples * np.dot((y_pred - y), X)
+            db = 1 / n_samples * np.sum(y_pred - y)
 
             self.w -= self.lr * dw
             self.b -= self.lr * db
@@ -39,14 +39,15 @@ class LogisticRegression:
 
 
 if __name__ == "__main__":
-    import matplotlib.pyplot as plt
     from sklearn import datasets
     from sklearn.model_selection import train_test_split
 
     bc = datasets.load_breast_cancer()
     X, y = bc.data, bc.target
 
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=1234)
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=1234
+    )
 
     regressor = LogisticRegression()
     regressor.fit(X_train, y_train)
