@@ -2,8 +2,9 @@ from collections import Counter
 
 import numpy as np
 
+
 # See also: https://en.wikipedia.org/wiki/Euclidean_distance
-ed = lambda x, y: np.sqrt(np.sum((x - y) ** 2))
+def ed(x, y): return np.sqrt(np.sum((x - y) ** 2))
 
 
 class KNN:

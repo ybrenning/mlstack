@@ -4,7 +4,8 @@ import numpy as np
 
 warnings.filterwarnings("ignore")
 
-sig = lambda x: 1 / (1 + np.exp(-x))
+
+def sig(x): return 1 / (1 + np.exp(-x))
 
 
 class LogisticRegression:

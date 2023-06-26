@@ -42,7 +42,7 @@ if __name__ == "__main__":
     regressor.fit(X_train, y_train)
     predicted = regressor.predict(X_test)
 
-    mse = lambda y_t, y_p: np.mean((y_t - y_p) ** 2)
+    def mse(y_t, y_p): return np.mean((y_t - y_p) ** 2)
 
     print(mse(y_test, predicted))
 
